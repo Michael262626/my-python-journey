@@ -36,16 +36,30 @@ public class AccountTest {
         Account michaelAccount = new Account();
         assertEquals(0, michaelAccount.getBalance());
 
-        michaelAccount.withdraw(-20_000);
+        michaelAccount.withdraw(20_000);
         assertEquals(0,  michaelAccount.getBalance());
 
     }
+
     @Test
     public void withdrawAmountLesserThanTheBalanceTest(){
         Account michaelAccount = new Account();
-        assertEquals(1_200, michaelAccount.getBalance());
+        assertEquals(0, michaelAccount.getBalance());
+        michaelAccount.deposit(1_200);
 
-        michaelAccount.withdraw(-1000);
+
+        michaelAccount.withdraw(1000);
         assertEquals(200, michaelAccount.getBalance());
+    }
+    @Test
+    public void withdrawAmountThanTheBalanceTest(){
+        Account michaelAccount = new Account();
+        assertEquals(0, michaelAccount.getBalance());
+        michaelAccount.deposit(200);
+
+        michaelAccount.withdraw(50_000);
+        assertEquals(200, michaelAccount.getBalance());
+
+
     }
 }
