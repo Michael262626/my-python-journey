@@ -1,0 +1,7 @@
+fruits = []
+count = 0
+for number in range(5):
+	fruit = input('Enter the name of fruit ')
+	fruits += [fruit]
+	count = count + 1
+print(fruits)

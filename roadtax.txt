@@ -1,0 +1,15 @@
+price = int(input("Enter the price :"))
+
+if price < 1000000:
+result = 10 * (price / 100)
+	print(result)
+
+if price >= 1000000 and <= 3000000:
+result = 15 * (price / 100)
+	print(result)
+if price >= 3000000 and <= 5000000:
+result = 20 * (price / 100)
+	print(result)
+if price > 5000000
+result = 25 *(price / 100)
+	print(result)
