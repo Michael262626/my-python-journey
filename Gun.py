@@ -11,7 +11,11 @@ class Gun:
 			return (f"{self.name} is out of ammo")
 
 	def reload(self):
-		self.ammo = ammo += 10
+		if ammo > 0:
+			 self. ammo = 10 -ammo
+           		 self.ammo += ammo
+		else:
+			self.ammo = ammo += 10
 		return "Reloading"
 	
 	def is_empty(self):
