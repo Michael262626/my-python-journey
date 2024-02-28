@@ -2,6 +2,7 @@ import random
 
 from python_code.Account import Account
 from python_code.IncorrectAccountNumberError import IncorrectAccountNumberError
+from python_code.InvalidPinError import InvalidPinError
 
 
 class BankApp:
@@ -20,6 +21,8 @@ class BankApp:
         return random.randint(1_000_000_000, 1_999_999_999)
 
     def deposit_cash(self, account_number, amount):
+        if self.find_account_number(account_number) is None:
+            raise IncorrectAccountNumberError("Account not found")
         account = self.find_account_number(account_number)
         account.deposit(amount)
 
@@ -27,7 +30,6 @@ class BankApp:
         for account in self.accounts:
             if account.get_account_number() == account_number:
                 return account
-            return None
 
     def withdraw_cash(self, account_number, amount, pin):
         account_num = self.find_account_number(account_number)
@@ -45,4 +47,10 @@ class BankApp:
         account = self.find_account_number(account_number)
         return account.get_balance()
 
-
+    def delete_account(self, account_number, pin):
+        if self.find_account_number(account_number) is None:
+            raise IncorrectAccountNumberError("Account not found")
+        account = self.find_account_number(account_number)
+        if account.validate(pin) is False:
+            raise InvalidPinError("Incorrect pin")
+        return account.remove(account_number)
