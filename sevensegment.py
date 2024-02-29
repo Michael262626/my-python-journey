@@ -20,7 +20,6 @@ def second_method(word):
 def third_method(word):
     if validate_method(word):
         if (word[3]) == '1':
-        if (word[3]) == '1':
             return '# # # #'
     if (word[3]) == '0':
         return "       "
@@ -28,18 +27,29 @@ def third_method(word):
 
 def fourth_method(word):
     # if validate_method(word):
-    if (word[1] and word[5]) == '1':
+    if (word[1] == '1' and word[5]) == '1':
         return '#     #'
-    if (word[1] and word[5]) == '0':
+    if (word[1] == '0' and word[5]) == '0':
         return "       "
+
+    if (word[1] == '0' and word[5]) == '1':
+        return '      #'
+    if (word[1] == '1' and word[5]) == '0':
+        return '#      '
+    return "       "
 
 
 def fifth_method(word):
     if validate_method(word):
-        if (word[2] and word[4]) == '1':
+        if (word[2] == '1' and word[4]) == '1':
             return '#     #'
-        if (word[2] and word[4]) == '0':
+        if (word[2] == '0' and word[4]) == '0':
             return "       "
+        if (word[2] == '1' and word[4]) == '0':
+            return '#      '
+        if (word[2] == '0' and word[4]) == '1':
+            return '      #'
+        return "       "
 
 
 def validate_method(word):
@@ -59,9 +69,9 @@ def is_on(number):
 
 def shape(number):
     if is_on(number):
-        return (f"{first_method(number)}\n{fourth_method(number)}"
-                f"\n{second_method(number)}\n{third_method(number)}" +
-                f"\n{fourth_method(number)}")
+        return (f"{first_method(number)}\n{fifth_method(number)}"
+                f"\n{third_method(number)}\n{fourth_method(number)}" +
+                f"\n{second_method(number)}")
     return "       "
 
 
